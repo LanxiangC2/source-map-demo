@@ -7,7 +7,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // 修改
   base: './',
   plugins: [vue(), vueJsx(), vueDevTools()],
   resolve: {
