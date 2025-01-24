@@ -1,45 +1,18 @@
-# source-map-demo
+## 背景
 
-This template should help get you started developing with Vue 3 in Vite.
+1. github cicd workflow 构建 demo
+2. source map 调试
 
-## Recommended IDE Setup
+source map 不能构建到线上，会直接暴露出去源码，
+我们使用:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+1. 在 vue 捕获错误的方法中将 错误的`行号`和`列号`拿到，借助`error-stack-parser`
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-pnpm install
+```js
+app.config.errorHandler = (err) => {
+  const errorStack = ErrorStackParser.parse(err as Error)
+  console.log('error', errorStack[0].toString())
+}
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-pnpm test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
+2. 安装 `source-map.js` 把错误和源代码映射到一起
