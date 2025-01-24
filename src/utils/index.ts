@@ -6,6 +6,8 @@ const getSourceMap = async (url: string) => {
   return response
 }
 const findCodeBySourcemap = async (stackFrame: any) => {
+  // 真实情况下，sourceMap 不和在同一个地方，这是处于安全考虑，所以需要去真实存在的服务器上获取，这里为了演示，就直接放在本地了
+
   const sourcemap = await getSourceMap(stackFrame.fileName + '.map')
 
   const fileContent = sourcemap.data
