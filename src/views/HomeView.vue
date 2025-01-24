@@ -9,6 +9,14 @@ type MyFramesObj = {
   index: number;
 }
 
+type StackFrameType = {
+  columnNumber: number;
+  fileName: string;
+  functionName: string;
+  lineNumber: number;
+  source: string
+}
+
 const activeName = ref<string[]>(['1'])
 const tabActiveName = ref<string>('local')
 const js_error = ref<any>(null)
@@ -22,10 +30,14 @@ let stackFramesObj: MyFramesObj = {
   index: 0,
 }
 
-const openDialog = (item: MyFramesObj) => {
+const openDialog = (item: StackFrameType, index: number) => {
   console.log('打开的item', item)
   innerVisible.value = true
-  stackFramesObj = item
+  stackFramesObj = {
+    line: item.lineNumber,
+    column: item.columnNumber,
+    index: index,
+  }
 }
 
 const getSource = async (sourcemap: any, lineNo: number, columnNo: number) => {
@@ -93,7 +105,7 @@ onMounted(() => {
           </el-col>
 
           <el-col :span="4">
-            <el-button type="primary" size="small" @click="openDialog(item)"> 映射源码 </el-button>
+            <el-button type="primary" size="small" @click="openDialog(item, index)"> 映射源码 </el-button>
           </el-col>
         </el-row>
 
