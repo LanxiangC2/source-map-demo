@@ -38,8 +38,8 @@ const getSource = async (sourcemap: any, lineNo: number, columnNo: number) => {
       column: originalPosition.column,
       line: originalPosition.line,
     }
-  } catch (error) {
-    ElMessage.error('解析sourcemap失败')
+  } catch (error: any) {
+    ElMessage.error('解析sourcemap失败', error)
   }
 }
 
@@ -87,9 +87,7 @@ onMounted(() => {
           </el-col>
 
           <el-col :span="4">
-            <el-button type="primary" size="small" @click="openDialog(item, index)">
-              映射源码
-            </el-button>
+            <el-button type="primary" size="small" @click="openDialog(item)"> 映射源码 </el-button>
           </el-col>
         </el-row>
 

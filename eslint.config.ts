@@ -21,10 +21,17 @@ export default defineConfigWithVueTs(
 
   pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
-  
+
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
   skipFormatting,
+
+  {
+    // 自定义规则
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
 )
