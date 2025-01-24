@@ -3,7 +3,7 @@
 
     <div class="'error-detail'">
 
-      <pre class="error-code">
+      <pre class="error-code" v-html="preLine()">
 
 
       </pre>
@@ -14,13 +14,16 @@
 <script setup lang="ts">
 
   import { encode } from 'he'
-  defineProps({
-    origin: Object,
-  })
 
-  const preLine = (origin: { line: number; source: any}) => {
-    const line = origin.line;
-    const originCodeLine = origin.source.split('\n')[line - 1];
+  type OriginType = {
+    line: number;
+    source: string;
+  }
+  const props = defineProps<{ origin: OriginType }>()
+
+  const preLine = () => {
+    const line = props.origin.line;
+    const originCodeLine = props.origin.source.split('\n')[line - 1];
     const len = originCodeLine.length - 1;
     const start = line - 3 < 0 ? 0 : line - 3;
     const end = start + 5 >= len ? len : start + 5; // 最多显示6行
@@ -35,8 +38,8 @@
 
       `);
 
-      return newLines.join('\n');
     }
+    return newLines.join('\n');
   }
 </script>
 
