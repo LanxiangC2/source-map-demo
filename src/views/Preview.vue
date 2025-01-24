@@ -14,13 +14,14 @@
 
   type OriginType = {
     line: number;
-    source: string;
+    column: number;
+    code: string;
   }
   const props = defineProps<{ origin: OriginType }>()
 
   const preLine = () => {
     const line = props.origin.line;
-    const originCodeLine = props.origin.source.split('\n')[line - 1];
+    const originCodeLine = props.origin.code.split('\n')[line - 1];
     const len = originCodeLine.length - 1;
     const start = line - 3 < 0 ? 0 : line - 3;
     const end = start + 5 >= len ? len : start + 5; // 最多显示6行
