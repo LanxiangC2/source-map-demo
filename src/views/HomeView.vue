@@ -49,6 +49,8 @@ const getSource = async (sourcemap: any, lineNo: number, columnNo: number) => {
       line: lineNo,
       column: columnNo - 1, // 注意：列号需要减一，因为 SourceMap 的列号是0开始的
     })
+
+    console.log('originalPosition', originalPosition)
     const code = consumer.sourceContentFor(originalPosition.source)
 
     return {
@@ -72,6 +74,7 @@ const sourcemapBeforeUpload = (file: any) => {
   reader.onload = async function (evt) {
     console.log('读取到的sourcemap', evt.target?.result)
     const code = await getSource(evt.target?.result, stackFramesObj.line, stackFramesObj.column)
+    console.log('映射后的 code', code)
     js_error.value.stack_frames[stackFramesObj.index].origin = code
     innerVisible.value = false
   }
