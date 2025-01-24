@@ -10,7 +10,7 @@ export default defineConfig({
   base: './',
   plugins: [vue(), vueJsx(), vueDevTools()],
   build: {
-    sourcemap: true,
+    sourcemap: false,
     outDir: 'dist',
   },
   resolve: {
