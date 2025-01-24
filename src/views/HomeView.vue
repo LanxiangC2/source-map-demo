@@ -115,9 +115,9 @@ onMounted(() => {
 
         <el-row :gutter="20">
           <template v-if="item.origin">
-            {{ item.origin }}
+            <!-- {{ item.origin }} -->
 
-            <Preview :code="item.origin" />
+            <Preview :origin="item.origin" />
           </template>
           <template v-else>
             {{ item.fileName }}
