@@ -14,7 +14,6 @@ app.use(router)
 
 app.config.errorHandler = (err) => {
   const errorStack = ErrorStackParser.parse(err as Error)
-  console.log('errorHandler', errorStack[0])
   findCodeBySourcemap(errorStack[0])
 }
 

@@ -20,8 +20,7 @@ const findCodeBySourcemap = async (stackFrame: any) => {
   })
   const code = consumer.sourceContentFor(originalPosition.source)
   // 还原之后的代码片段
-  console.log(code)
-  return originalPosition
+  console.log('还原之后的代码片段：', code)
 }
 
 export { findCodeBySourcemap }
