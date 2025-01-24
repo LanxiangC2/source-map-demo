@@ -3,6 +3,12 @@ import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import SourceMap from 'source-map-js'
 
+type MyFramesObj = {
+  line: number;
+  column: number;
+  index: number;
+}
+
 const activeName = ref<string[]>(['1'])
 const tabActiveName = ref<string>('local')
 const js_error = ref<any>(null)
@@ -10,16 +16,16 @@ const js_error = ref<any>(null)
 const innerVisible = ref(false)
 const isError = ref(false)
 
-const stackFramesObj = {
+let stackFramesObj: MyFramesObj = {
   line: 0,
   column: 0,
-  index: '',
+  index: 0,
 }
 
-const openDialog = (item = {}) => {
+const openDialog = (item: MyFramesObj) => {
   console.log('打开的item', item)
   innerVisible.value = true
-  Object.assign(stackFramesObj, item)
+  stackFramesObj = item
 }
 
 const getSource = async (sourcemap: any, lineNo: number, columnNo: number) => {
