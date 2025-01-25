@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import SourceMap from 'source-map-js'
-import Preview from './Preview.vue'
+import Preview from './ErrorStackPreview.vue'
 
 type MyFramesObj = {
   line: number;
@@ -79,6 +79,7 @@ const sourcemapBeforeUpload = (file: any) => {
     js_error.value.stack_frames[stackFramesObj.index].origin = code
     innerVisible.value = false
   }
+  return false
 }
 
 onMounted(() => {

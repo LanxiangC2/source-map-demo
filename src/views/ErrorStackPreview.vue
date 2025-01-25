@@ -64,7 +64,7 @@
       word-wrap: normal;
       & /deep/ .heightlight {
         color: white;
-        background-color: yellow;
+        background-color: red;
       }
     }
 
