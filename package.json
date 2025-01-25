@@ -14,10 +14,13 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@rrweb/types": "2.0.0-alpha.18",
     "axios": "^1.7.9",
     "error-stack-parser": "^2.1.4",
     "he": "^1.2.0",
     "pinia": "^2.3.1",
+    "rrweb": "2.0.0-alpha.4",
+    "rrweb-player": "1.0.0-alpha.4",
     "source-map-js": "^1.2.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"

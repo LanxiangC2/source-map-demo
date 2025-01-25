@@ -112,3 +112,8 @@ const _getSource = async (sourcemap: any, lineNo: number, columnNo: number) => {
 ```
 
 2. 放在自己的服务器上，然后通过 fetch / xhr 方式获取，处理逻辑同上
+
+## rrweb 录制回放
+
+1. 监控用户行为 (鼠标点击、键盘输入等) 见 RecordScreen.vue
+2. 在监控系统中回放错误发生的路径，见 PlayScreen.vue

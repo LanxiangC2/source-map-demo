@@ -24,6 +24,8 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/trigger">Trigger Js Error</RouterLink>
+        <RouterLink to="/record">Record</RouterLink>
+        <RouterLink to="/play">Play </RouterLink>
       </nav>
     </div>
   </header>
