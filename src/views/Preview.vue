@@ -62,7 +62,7 @@
       overflow: hidden;
       font-family: consolas, 'Courier New', Courier, monospace;
       word-wrap: normal;
-      .heightlight {
+      & /deep/ .heightlight {
         color: white;
         background-color: yellow;
       }
