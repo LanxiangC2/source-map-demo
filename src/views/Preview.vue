@@ -1,7 +1,7 @@
 <template>
   <div class="pre-code">
 
-    <div class="'error-detail'">
+    <div class="error-detail">
 
       <div class="error-code" v-html="content" />
     </div>
@@ -61,13 +61,13 @@
       padding: 10px;
       overflow: hidden;
       font-family: consolas, 'Courier New', Courier, monospace;
-      word-wrap: normal
+      word-wrap: normal;
+      .heightlight {
+        color: white;
+        background-color: yellow;
+      }
     }
 
-    .heightlight {
-      color: white;
-      background-color: yellow;
-    }
   }
 }
 
