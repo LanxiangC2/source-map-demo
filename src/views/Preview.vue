@@ -23,8 +23,12 @@
 
   const preLine = () => {
     const line = props.origin.line;
-    const originCodeLine = props.origin.code.split('\n')[line - 1];
-    console.log('originCodeLine', originCodeLine)
+    // 先获取源码有多少行
+    const originCodeLine = props.origin.code.split('\n');
+
+    // 发生错误的那一行
+    // const errorLine = originCodeLine[line - 1];
+    // console.log('originCodeLine', originCodeLine)
     const len = originCodeLine.length - 1;
     const start = line - 3 < 0 ? 0 : line - 3;
     const end = start + 5 >= len ? len : start + 5; // 最多显示6行
