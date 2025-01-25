@@ -3,7 +3,7 @@
 
     <div class="'error-detail'">
 
-      <pre class="error-code" v-html="preLine()" />
+      <pre class="error-code" v-html="content" />
     </div>
   </div>
 </template>
@@ -11,6 +11,7 @@
 <script setup lang="ts">
 
   import { encode } from 'he'
+  import { ref, onMounted } from 'vue'
 
   type OriginType = {
     line: number;
@@ -18,10 +19,12 @@
     code: string;
   }
   const props = defineProps<{ origin: OriginType }>()
+  const content = ref<string>()
 
   const preLine = () => {
     const line = props.origin.line;
     const originCodeLine = props.origin.code.split('\n')[line - 1];
+    console.log('originCodeLine', originCodeLine)
     const len = originCodeLine.length - 1;
     const start = line - 3 < 0 ? 0 : line - 3;
     const end = start + 5 >= len ? len : start + 5; // 最多显示6行
@@ -39,6 +42,10 @@
     }
     return newLines.join('\n');
   }
+
+  onMounted(() => {
+    content.value = preLine();
+  })
 </script>
 
 <style lang="less" scoped>
