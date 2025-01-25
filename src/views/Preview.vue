@@ -3,7 +3,7 @@
 
     <div class="'error-detail'">
 
-      <pre class="error-code" v-html="content" />
+      <div class="error-code" v-html="content" />
     </div>
   </div>
 </template>
@@ -57,10 +57,16 @@
 .pre-code {
   .error-detail {
     .error-code {
+      margin-left: 20px;
       padding: 10px;
       overflow: hidden;
       font-family: consolas, 'Courier New', Courier, monospace;
       word-wrap: normal
+    }
+
+    .heightlight {
+      color: white;
+      background-color: yellow;
     }
   }
 }
